@@ -122,6 +122,19 @@ void initializeWordArray(Word wordArray[], int size)
             wordArray[i].n = wordArray[i].word.length();
       }
 }
+void game_hint(string &answer, const string &codeword)
+{
+      size_t index = codeword.find_first_of("abcdefghijklmnopqrstuvwxyz");
+      if (index != string::npos)
+      {
+            answer[index] = codeword[index];
+            cout << "\nHint: The first letter of the codeword is '" << codeword[index] << "'\n";
+      }
+      else
+      {
+            cout << "\nNo hint available for this codeword.\n";
+      }
+}
 
 Word getRandomWord(const Word wordArray[], int size)
 {
@@ -164,6 +177,10 @@ int main()
                         answer[i] = letter;
                         guess = true;
                   }
+            }
+            if (!guess && misses == 1)
+            {
+                  game_hint(answer, codeword);
             }
             if (guess)
             {
