@@ -2,13 +2,11 @@
 using namespace std;
 
 void game_title(){
-cout << "======================\n";
-cout << "Game Title\n";
-cout << "======================\n";	
+cout << "---------------------- Hangman-Game ---------------------- \n";
+cout << "Instruction: Save your friend from being hanged by guessing the letters in the codeword, You have only 6 times wrong guessing before they are hanged.\n Try your best.\n";
+
 }
 int main()
 {	game_title();
-      cout << "Hello world";
-
       return 0;
 }
