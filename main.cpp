@@ -1,7 +1,7 @@
 #include <iostream>
+#include <vector>
 #include <cstdlib>
 #include <ctime>
-
 using namespace std;
 
 struct Word
@@ -84,6 +84,19 @@ else if(misses ==6)
 	cout<<"     |\n";
 	cout<<"======== \n";	
 	}
+}
+void display_status(vector<char> incorrect, string answer)
+{
+      cout << "\nIncorrect guesses: \n";
+      for (int i = 0; i < incorrect.size(); i++)
+      {
+            cout << incorrect[i] << "  ";
+      }
+      cout << "\nCode word:\n";
+      for (int i = 0; i < answer.length(); i++)
+      {
+            cout << answer[i] << "  ";
+      }
 }
 void end_game(string answer, string codeword)
 {
