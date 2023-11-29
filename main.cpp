@@ -3,6 +3,7 @@
 #include <ctime>
 
 using namespace std;
+
 struct Word
 {
       string word;
@@ -12,6 +13,77 @@ void game_title(){
 cout << "---------------------- Hangman-Game ---------------------- \n";
 cout << "Instruction: Save your friend from being hanged by guessing the letters in the codeword, You have only 6 times wrong guessing before they are hanged.\n Try your best.\n";
 
+}
+void display_man(int misses){
+	if( misses ==0){
+	cout<<" +---+\n";
+	cout<<" |   |\n";
+	cout<<"     |\n";
+	cout<<"     |\n";
+	cout<<"     |\n";
+	cout<<"     |\n";
+	cout<<"======== \n";
+	}
+	else if(misses ==1)
+	{
+	cout<<" +---+\n";
+	cout<<" |   |\n";
+	cout<<" O   |\n";
+	cout<<"     |\n";
+	cout<<"     |\n";
+	cout<<"     |\n";
+	cout<<"======== \n";	
+	}
+	else if(misses ==2)
+	{
+	cout<<" +---+\n";
+	cout<<" |   |\n";
+	cout<<" O   |\n";
+	cout<<" |   |\n";
+	cout<<"     |\n";
+	cout<<"     |\n";
+	cout<<"======== \n";	
+	}
+	else if(misses ==3)
+	{
+	cout<<" +---+\n";
+	cout<<" |   |\n";
+	cout<<" O   |\n";
+	cout<<" |   |\n";
+	cout<<"/    |\n";
+	cout<<"     |\n";
+	cout<<"======== \n";	
+	}
+	else if(misses ==4)
+	{
+	cout<<" +---+\n";
+	cout<<" |   |\n";
+	cout<<" O   |\n";
+	cout<<"/|\\  |\n";
+	cout<<"     |\n";
+	cout<<"     |\n";
+	cout<<"======== \n";	
+	}
+	else if(misses ==5)
+	{
+	cout<<" +---+\n";
+	cout<<" |   |\n";
+	cout<<" O   |\n";
+	cout<<"/|\\  |\n";
+	cout<<"/    |\n";
+	cout<<"     |\n";
+	cout<<"======== \n";	
+	}
+else if(misses ==6)
+	{
+	cout<<" +---+\n";
+	cout<<" |   |\n";
+	cout<<" O   |\n";
+	cout<<"/|\\  |\n";
+	cout<<"/ \\  |\n";
+	cout<<"     |\n";
+	cout<<"======== \n";	
+	}
 }
 void initializeWordArray(Word wordArray[], int size)
 {
@@ -38,7 +110,5 @@ int main()
       Word myWordArray[arraySize];
       initializeWordArray(myWordArray, arraySize);
       Word randomWord = getRandomWord(myWordArray, arraySize);
-      game_title();
-      std::cout << "\nRandom Word: " << randomWord.word << "\nLength: " << randomWord.n;
       return 0;
 }
