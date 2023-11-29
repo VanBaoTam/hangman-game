@@ -163,7 +163,8 @@ int main()
       char letter;
       game_title();
       while (answer != codeword && misses < 7)
-      {
+      {	system("cls");
+      if(misses == 6 ) break;
             display_man(misses);
             display_status(incorrect, answer);
 
@@ -194,7 +195,7 @@ int main()
             }
             guess = false;
       }
-
+display_man(misses);
       end_game(answer, codeword);
       return 0;
 }
