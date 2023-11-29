@@ -182,6 +182,7 @@ int main()
             if (!guess && misses == 1)
             {
                   game_hint(answer, codeword);
+                  system("pause");
             }
             if (guess)
             {
