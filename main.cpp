@@ -3,87 +3,88 @@
 #include <cstdlib>
 #include <ctime>
 using namespace std;
-
 struct Word
 {
       string word;
       int n;
 };
-void game_title(){
-cout << "---------------------- Hangman-Game ---------------------- \n";
-cout << "Instruction: Save your friend from being hanged by guessing the letters in the codeword, You have only 6 times wrong guessing before they are hanged.\n Try your best.\n";
-
+void game_title()
+{
+      cout << "---------------------- Hangman-Game ---------------------- \n";
+      cout << "Instruction: Save your friend from being hanged by guessing the letters in the codeword, You have only 6 times wrong guessing before they are hanged.\n Try your best.\n";
 }
-void display_man(int misses){
-	if( misses ==0){
-	cout<<" +---+\n";
-	cout<<" |   |\n";
-	cout<<"     |\n";
-	cout<<"     |\n";
-	cout<<"     |\n";
-	cout<<"     |\n";
-	cout<<"======== \n";
-	}
-	else if(misses ==1)
-	{
-	cout<<" +---+\n";
-	cout<<" |   |\n";
-	cout<<" O   |\n";
-	cout<<"     |\n";
-	cout<<"     |\n";
-	cout<<"     |\n";
-	cout<<"======== \n";	
-	}
-	else if(misses ==2)
-	{
-	cout<<" +---+\n";
-	cout<<" |   |\n";
-	cout<<" O   |\n";
-	cout<<" |   |\n";
-	cout<<"     |\n";
-	cout<<"     |\n";
-	cout<<"======== \n";	
-	}
-	else if(misses ==3)
-	{
-	cout<<" +---+\n";
-	cout<<" |   |\n";
-	cout<<" O   |\n";
-	cout<<" |   |\n";
-	cout<<"/    |\n";
-	cout<<"     |\n";
-	cout<<"======== \n";	
-	}
-	else if(misses ==4)
-	{
-	cout<<" +---+\n";
-	cout<<" |   |\n";
-	cout<<" O   |\n";
-	cout<<"/|\\  |\n";
-	cout<<"     |\n";
-	cout<<"     |\n";
-	cout<<"======== \n";	
-	}
-	else if(misses ==5)
-	{
-	cout<<" +---+\n";
-	cout<<" |   |\n";
-	cout<<" O   |\n";
-	cout<<"/|\\  |\n";
-	cout<<"/    |\n";
-	cout<<"     |\n";
-	cout<<"======== \n";	
-	}
-else if(misses ==6)
-	{
-	cout<<" +---+\n";
-	cout<<" |   |\n";
-	cout<<" O   |\n";
-	cout<<"/|\\  |\n";
-	cout<<"/ \\  |\n";
-	cout<<"     |\n";
-	cout<<"======== \n";	
-	}
+void display_man(int misses)
+{
+      if (misses == 0)
+      {
+            cout << " +---+\n";
+            cout << " |   |\n";
+            cout << "     |\n";
+            cout << "     |\n";
+            cout << "     |\n";
+            cout << "     |\n";
+            cout << "======== \n";
+      }
+      else if (misses == 1)
+      {
+            cout << " +---+\n";
+            cout << " |   |\n";
+            cout << " O   |\n";
+            cout << "     |\n";
+            cout << "     |\n";
+            cout << "     |\n";
+            cout << "======== \n";
+      }
+      else if (misses == 2)
+      {
+            cout << " +---+\n";
+            cout << " |   |\n";
+            cout << " O   |\n";
+            cout << " |   |\n";
+            cout << "     |\n";
+            cout << "     |\n";
+            cout << "======== \n";
+      }
+      else if (misses == 3)
+      {
+            cout << " +---+\n";
+            cout << " |   |\n";
+            cout << " O   |\n";
+            cout << " |   |\n";
+            cout << "/    |\n";
+            cout << "     |\n";
+            cout << "======== \n";
+      }
+      else if (misses == 4)
+      {
+            cout << " +---+\n";
+            cout << " |   |\n";
+            cout << " O   |\n";
+            cout << "/|\\  |\n";
+            cout << "     |\n";
+            cout << "     |\n";
+            cout << "======== \n";
+      }
+      else if (misses == 5)
+      {
+            cout << " +---+\n";
+            cout << " |   |\n";
+            cout << " O   |\n";
+            cout << "/|\\  |\n";
+            cout << "/    |\n";
+            cout << "     |\n";
+            cout << "======== \n";
+      }
+      else if (misses == 6)
+      {
+            cout << " +---+\n";
+            cout << " |   |\n";
+            cout << " O   |\n";
+            cout << "/|\\  |\n";
+            cout << "/ \\  |\n";
+            cout << "     |\n";
+            cout << "======== \n";
+      }
 }
 void display_status(vector<char> incorrect, string answer)
 {
@@ -100,15 +101,15 @@ void display_status(vector<char> incorrect, string answer)
 }
 void end_game(string answer, string codeword)
 {
-	if(answer ==codeword)
-	{
-		cout<<"Hooray! You saved the person from being hanged and earned a medal of honor!\n";
-		cout<<"Congratulations !"<<endl;
-	}
-	else
-	{
-		cout<<"Oh shit! Your friend is hanged!\n";
-	}
+      if (answer == codeword)
+      {
+            cout << "Hooray! You saved the person from being hanged and earned a medal of honor!\n";
+            cout << "Congratulations !" << endl;
+      }
+      else
+      {
+            cout << "Oh shit! Your friend is hanged!\n";
+      }
 }
 
 void initializeWordArray(Word wordArray[], int size)
@@ -136,5 +137,47 @@ int main()
       Word myWordArray[arraySize];
       initializeWordArray(myWordArray, arraySize);
       Word randomWord = getRandomWord(myWordArray, arraySize);
+      int misses = 0;
+      string codeword = randomWord.word;
+      int length = randomWord.n;
+      string answer = "";
+      for (int i = 0; i < length; ++i)
+      {
+            answer += "_";
+      }
+      vector<char> incorrect;
+      bool guess = false;
+      char letter;
+      game_title();
+      while (answer != codeword && misses < 7)
+      {
+            display_man(misses);
+            display_status(incorrect, answer);
+
+            cout << "\n\nPlease enter your guess: ";
+            cin >> letter;
+
+            for (int i = 0; i < codeword.length(); i++)
+            {
+                  if (letter == codeword[i])
+                  {
+                        answer[i] = letter;
+                        guess = true;
+                  }
+            }
+            if (guess)
+            {
+                  cout << "\nCorrect!\n";
+            }
+            else
+            {
+                  cout << "\nIncorrect! Another portion of the person has been drawn.\n";
+                  incorrect.push_back(letter);
+                  misses++;
+            }
+            guess = false;
+      }
+
+      end_game(answer, codeword);
       return 0;
 }
