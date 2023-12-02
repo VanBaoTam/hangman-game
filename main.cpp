@@ -40,5 +40,6 @@ int main()
       Word randomWord = getRandomWord(myWordArray, arraySize);
       game_title();
       std::cout << "\nRandom Word: " << randomWord.word << "\nLength: " << randomWord.n;
+      cout << "DANG KIEM TRA";
       return 0;
 }
